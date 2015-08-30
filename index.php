@@ -13,21 +13,19 @@ $feed = json_decode($feed,true);
 array_push($array, $feed['items'][0]['count']);
 }
 
-$feed1 = file_get_contents('http://api.stackexchange.com/2.2/users/moderators?page=1&pagesize=5&order=desc&sort=reputation&site=stackoverflow');
-$feed1 = gzinflate(substr($feed1, 10, -8));
-$feed1 = json_decode($feed1,true);
-//print_r($feed);
+$feed_collection = file_get_contents('http://api.stackexchange.com/2.2/users/moderators?page=1&pagesize=9&order=desc&sort=reputation&site=stackoverflow');
+$feed_collection = gzinflate(substr($feed_collection, 10, -8));
+$feed_collection = json_decode($feed_collection,true);
 
 $user = array();
 $tag = array();
 
-//$store = $feed['items'][0]['user_id'];
 
-for($a=0;$a<5;$a++) {
-	$user[$a]['user_id'] = $feed1['items'][$a]['user_id'];
-	$user[$a]['name'] = $feed1['items'][$a]['display_name'];
-	$user[$a]['image'] = $feed1['items'][$a]['profile_image'];
-	$user[$a]['rep'] = $feed1['items'][$a]['reputation'];
+for($a=0;$a<9;$a++) {
+	$user[$a]['user_id'] = $feed_collection['items'][$a]['user_id'];
+	$user[$a]['name'] = $feed_collection['items'][$a]['display_name'];
+	$user[$a]['image'] = $feed_collection['items'][$a]['profile_image'];
+	$user[$a]['rep'] = $feed_collection['items'][$a]['reputation'];
 }
 
  ?>
@@ -76,6 +74,7 @@ for($a=0;$a<5;$a++) {
 		<div id="header" class="container">
 			<div id="logo"> <span class="icon icon-stack-overflow"></span>
 				<h1><a href="#">Stack Overflow</a></h1>
+				<h3><a href="#"> Stack Clipper </a></h3>
 				 </div>
 			
 		</div>
@@ -85,8 +84,8 @@ for($a=0;$a<5;$a++) {
 	<div id="wrapper3">
 		<div id="portfolio" class="container">
 			<div class="title">
-				<h2>Top Users IN Stackoverflow </h2>
-				<span class="byline">based on Reputation</span> </div>
+				<h2>Top <em>9</em> Users IN Stackoverflow </h2>
+				<span class="byline">Based on Reputation</span> </div>
 
 				<?php $d=1;
 				foreach ($user as $key) { ?>

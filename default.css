@@ -340,7 +340,7 @@
 	}
 	
 	
-	#logo h1 a
+	#logo h1 a, #logo h3 a
 	{
 		color: #6C2A6A;
 	}
@@ -627,27 +627,23 @@
 		font-size: 1.6em;
 		color: rgba(0,0,0,0.8);
 	}
-
+	
 	.column1,
 	.column2,
 	.column3,
-	.column4
-	{
-		width: 282px;
-	}
-	
-	.column1,
-	.column2,
-	.column3
+	.column5,
+	.column6,
+	.column7,
+	.column4,
+	.column8,
+	.column9
 	{
 		float: left;
-		margin-right: 24px;
+		margin-right: 20px;
+		width: 380px;
+		margin-top: 150px;
 	}
-	
-	.column4
-	{
-		float: right;
-	}
+
 
 /*********************************************************************************/
 /* Three Columns                                                                 */
